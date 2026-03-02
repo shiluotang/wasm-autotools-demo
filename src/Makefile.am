@@ -6,7 +6,7 @@ AM_LDFLAGS  =
 AM_CPPFLAGS += -I$(top_srcdir)/include
 AM_LDFLAGS  += -no-undefined
 
-noinst_LTLIBRARIES = \
+lib_LTLIBRARIES = \
 libfoo.la
 
 libfoo_la_SOURCES = \

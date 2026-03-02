@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.71])
 
-AC_INIT([wasm-demo-autotools], [1.0], [])
+AC_INIT([wasm-autotools-demo], [1.0], [])
 
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIRS([m4])
@@ -29,6 +29,7 @@ PKG_CHECK_MODULES([GTEST_MAIN], [gtest_main])
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
+                 include/Makefile
                  src/Makefile
                  tests/Makefile])
 AC_OUTPUT
