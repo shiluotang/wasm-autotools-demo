@@ -11,12 +11,15 @@ LOG_COMPILER = /usr/bin/js --no-experimental-fetch --trace-uncaught
 AM_CPPFLAGS += -I$(top_srcdir)/include
 AM_LDFLAGS  += $(top_builddir)/src/libfoo.la
 
-check_PROGRAMS = \
-test_io \
-test_ifstream
+check_PROGRAMS =
 
+check_PROGRAMS += test_io
 test_io_SOURCES = test_io.cc
 
+check_PROGRAMS += test_ifstream
 test_ifstream_SOURCES = test_ifstream.cc
+
+check_PROGRAMS += test_foo
+test_foo_SOURCES = test_foo.cc
 
 TESTS = $(check_PROGRAMS)
