@@ -5,4 +5,4 @@ AM_CFLAGS   =
 AM_CXXFLAGS =
 AM_LDFLAGS  =
 
-SUBDIRS = tests
+SUBDIRS = src tests
