@@ -36,7 +36,11 @@ function main() {
         popd >& /dev/null
     fi
     if [[ -f ${bindir}/Makefile ]]; then
-        emmake make -C ${bindir} clean all check V=1
+        if command -v bear >& /dev/null; then
+            emmake bear --append -- make -C ${bindir} clean all check V=1
+        else
+            emmake make -C ${bindir} clean all check V=1
+        fi
     fi
     popd >& /dev/null
 }
