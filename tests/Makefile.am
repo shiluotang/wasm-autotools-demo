@@ -1,7 +1,7 @@
 AM_CPPFLAGS =
 AM_CFLAGS   =
 AM_CXXFLAGS = -s NO_DISABLE_EXCEPTION_CATCHING
-AM_LDFLAGS  =
+AM_LDFLAGS  = --preload-file $(srcdir)/data@/
 
 LOG_COMPILER = /usr/bin/js --no-experimental-fetch --trace-uncaught
 

@@ -9,13 +9,15 @@ void test_ifstream() {
     std::ifstream infile(filename.c_str());
     if (!infile)
         throw std::runtime_error("file i/o failed!");
+    std::string sep(20, '=');
+    std::cout << sep << " " << filename << " " << sep << std::endl;
+    std::cout << infile.rdbuf() << std::endl;
 }
 
 #ifdef __EMSCRIPTEN__
-int main() try {
-#else
-int main(int argc, char* argv[]) try {
+extern "C"
 #endif
+int main(int argc, char* argv[]) try {
     test_ifstream();
     return EXIT_SUCCESS;
 } catch (std::exception const &e) {
