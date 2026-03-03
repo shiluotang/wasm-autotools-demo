@@ -15,6 +15,9 @@ function mksdir() {
 }
 
 function main() {
+    if [[ -f ${HOME}/.emscripten ]]; then
+        export EM_CONFIG=${HOME}/.emscripten
+    fi
     local bindir=bin-${TARGET}
     pushd ${CURDIR} >& /dev/null
     mksdir build-aux m4
@@ -32,12 +35,12 @@ function main() {
         if [[ ! -d ${HOME}/opt ]]; then
             mkdir ${HOME}/opt
         fi
-        emconfigure ../configure --host=${TARGET} --prefix=${HOME}/opt
+        emconfigure ../configure --host=${TARGET} --prefix=${EM_CACHE:-${HOME}/.emscripten_cache/sysroot}
         popd >& /dev/null
     fi
     if [[ -f ${bindir}/Makefile ]]; then
         if command -v bear >& /dev/null; then
-            emmake bear --append -- make -C ${bindir} clean all check V=1
+            bear --append -- emmake make -C ${bindir} clean all check V=1
         else
             emmake make -C ${bindir} clean all check V=1
         fi
